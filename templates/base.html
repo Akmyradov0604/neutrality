@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<header>
+		<video autoplay muted loop >
+			<source src="{% static 'video/videos.mp4' %}" type="video/mp4">
+			</video>
+			<nav>
+				<div class="navbar_menu">
+					<div class="logo">
+						<img src="{% static 'images/Bitaraplyk-logo.png' %}" alt="">
+					</div>
+					<div class="nav_menu">
+						<ul>
+							<li><a href="{% url 'home' %}">Home</a></li>
+							<li><a href="{% url 'about' %}">About Forum</a></li>
+							<li><a href="{% url 'news' %}">News</a></li>
+							<li><a href="{% url 'turkmen' %}">Turkmenistan</a></li>
+							<li><a href="{% url 'register' %}">Registration</a></li>
+							<li><a href="#">Contact us</a></li>
+						</ul>
+					</div>
+					<div class="nav_right">
+						<div class="profile">
+							<a href="#">Personal Web Page</a>
+						</div>
+						<ul>
+							<li><a href="#">ENG</a></li>
+							<li><a href="#">RUS</a></li>
+							<li><a href="#">TKM</a></li>
+						</ul>						
+					</div>
+				</div>
+				<div class="date">
+					<h3>DECEMBER 11-12, 2020 ASHGABAT, TURKMENISTAN</h3>
+				</div>
+				<div class="header_bottom">
+					<div class="bottom_left" >
+						<h1>
+							INTERNATIONAL CONFERENCE «POLICY OF NEUTRALITY AND ITS IMPORTANCE IN ENSURING INTERNATIONAL PEACE, SECURITY AND SUSTAINABLE DEVELOPMENT»
+						</h1>
+						<a class="register">Registration</a>
+					</div>
+					<div class="bottom_right">
+						<div class="logo_2">
+							<img src="{% static 'images/Logo_2.png' %}" alt="">
+						</div>
+						<p>
+							2020 year -
+							<br>
+							Turkmenistan – Home of Neutrality
+						</p>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="main-wrapper">
+			<div class="main">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+		<div class="wrapper">
+			<footer>
+				<div class="section_1">
+					<form class="subscribe">
+						<label for="subscribe"> Subscribe to our feed </label>
+						<div class="input">
+							<input type="email" placeholder="Your e-mail address..." required="required">
+							<button type="submit">Subscribe</button>
+						</div>
+					</form>
+					<div class="footer_logo">
+						<div class="logo">
+							<a href="{% url 'home' %}">
+								<img src="{% static 'images/Bitaraplyk-logo.png' %}" alt="Logo">
+							</a>
+						</div>
+						<div class="name">International Conference «Policy of Neutrality and its importance in ensuring international peace, security and sustainable development»</div>
+					</div>
+				</div>
+				<div class="section_2">
+					<div class="footer_nav">
+						<div class="nav_link">
+							<a href="{% url 'home' %}">Home</a>
+						</div>
+						<div class="nav_link">
+							<a href="{% url 'about' %}">About Forum</a>
+						</div>
+						<div class="nav_link">
+							<a href="{% url 'news' %}">News</a>
+						</div>
+						<div class="nav_link">
+							<a href="{% url 'turkmen' %}">Turkmenistan</a>
+							<ul>
+								<li><a href="#">General information</a></li>
+								<li><a href="#">Foreign policy</a></li>
+								<li><a href="#">Economy</a></li>
+								<li><a href="#">Social sphere</a></li>
+								<li><a href="#">Healthcare</a></li>
+							</ul>
+						</div>
+						<div class="nav_link">
+							<a href="{% url 'register' %}">Registration</a>
+						</div>
+						<div class="nav_link">
+							<a href="{% url 'contact' %}">Contact us</a>
+						</div>
+						<div class="mobile_apps">
+							<div class="qrcode1">
+								<img src="{% static 'images/qr-code.png' %}" alt="">
+							</div>
+							<div class="qrcode2">
+								<img src="{% static 'images/qr-code-logo.png' %}" alt="">
+							</div>
+							<div class="store">
+								<img src="{% static 'images/Google.png' %}" alt="">
+							</div>
+							<div class="store">
+								<img src="{% static 'images/Apple.png' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="section_3">
+					<p>Copyright © 2020. All Rights Reserved.</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+	</html>

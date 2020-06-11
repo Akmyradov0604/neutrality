@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="home-content">
+	<div class="president card">
+		<div class="president-img">
+			<img src="{% static 'images/President.jpg' %}" alt="">
+		</div>
+		<div class="speech">
+			<h2>PRESIDENT OF TURKMENISTAN GURBANGULY BERDIMUHAMEDOV:</h2>
+			<p>
+				“Our country meets neutrality anniversary in the conditions of peace and creation, neighbourliness, respect and mutual understanding with all friends and partners in the world community. We clearly see the prospects, we surely form development plans for the state and society.
+			</p>
+			<p>
+				The verified course towards broad, multidimensional international cooperation allows us looking forward with optimism. Neutral, peaceful Turkmenistan will do everything necessary for peace and security consolidation on our planet, to contribute to development and progress of human civilization.”
+			</p>
+		</div>
+	</div>
+	<div class="title">
+		<a href="#">View all ></a>
+		<h1>Latest news</h1>
+	</div>
+	<div class="news">
+		<a href="{% url 'detail' news.0.id %}" class="large card">
+			<div class="large_img">
+				<img src="{% static 'images/test.jpg' %}" alt="#">
+			</div>
+			<div class="large_content">
+				<h3>{{ news.0.title }}</h3>
+				<p>{{ news.0.summary }}</p>
+			</div>
+		</a>
+		<div class="small">
+			{% for new in news|slice:"1:5" %}
+			<a href="{% url 'detail' new.id %}" class="small_item card">
+				<div class="small_item_img">
+					<img src="{{ new.image.url }}" alt="{{ new.title }}">
+				</div>
+				<div class="small_item_content">
+					<h3>{{ new.title }}</h3>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="other_news_container">
+		<div class="other_news">
+			<div class="other_news_img">
+				<img src="{% static 'images/other_news.jpeg' %}" alt="">
+			</div>
+			<div class="other_news_content">
+				<h3>The international сonferenсe dediсated to the 20th anniversary of Neutrality was held in Turkmenistan</h3>
+				<p>December 12, 1995-is one of the most important dates in the life of turkmen people.With the adoption of historical resolution by the General Assembly of the United Nations Organization 25 years ago,</p>
+				<a href="#">Read more ></a>
+			</div>
+		</div>
+	</div>
+	<div class="title">
+		<h1>MOMENTS FROM CEREMONY</h1>
+	</div>
+	<div class="gallery">
+
+	</div>
+</div>	
+
+{% endblock %}

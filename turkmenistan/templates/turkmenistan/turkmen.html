@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="turkmen_content">
+	<div class="bread_crumb">
+		<a href="{% url 'home' %}">Home</a>
+		/
+		<a href="{% url 'turkmen' %}" onclick="e.preventDefault()" class="active" >Turkmenistan</a>
+	</div>
+	<div class="sidebar">
+		<div class="latest_news">
+		<h2 class="bottom_brd" style="padding-bottom: .666rem;">Latest news</h2>
+			{% for new in news %}
+				<div class="link bottom_brd">
+					<a href="{% url 'detail' new.id %}"> {{ new.title }}</a>
+				</div>	
+			{% endfor %}
+		</div>
+		<div class="useful_link">
+			<h2 class="bottom_brd" style="padding-bottom: .666rem;">Useful links</h2>
+			<div class="link bottom_brd"><a href="#">MINISTRY OF FOREIGN AFFAIRS OF TURKMENISTAN</a></div>
+			<div class="link bottom_brd"><a href="#">THE STATE NEWS AGENCY OF TURKMENISTAN</a></div>
+			<div class="link bottom_brd"><a href="#">STATE MIGRATION SERVICE OF TURKMENISTAN</a></div>
+			<div class="link bottom_brd"><a href="#">THE STATE COMMODITY AND RAW MATERIALS EXCHANGE OF TURKMENISTAN</a></div>
+		</div>
+	</div>
+	<div class="turkmen_article">
+		{% for article in articles %}
+			<div class="article_item">
+				<h2>{{ article.title }}</h2>
+				<p>{{ article.summary }}</p>
+				<a href="/turkmenistan/{{ article.slug }}">Read More</a>
+			</div>
+		{% endfor %}
+	</div>	
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="news_detail">
+	<div class="bread_crumb">
+		<a href="{% url 'home' %}">Home</a>
+		/
+		<a href="{% url 'news' %}">News</a>
+		/
+		<a href="#" onclick="e.preventDefault()" class="active">...</a>
+	</div>
+	<h2>{{ news.title }}</h2>
+	<article class="news_article">
+		<div class="full-img">
+			<img src="{{ news.image.url }}" alt="">
+		</div>
+		{{ news.body | safe}}
+	</article>
+</div>
+{% endblock %}

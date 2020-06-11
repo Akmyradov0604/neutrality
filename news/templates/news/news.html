@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% load static %}
+	<div class="news-content">
+		<h1>News</h1>
+		
+		<div class="news">
+			<a href="{% url 'detail' news.0.id %}" class="large card">
+				<div class="large_img">
+					<img src="{{ news.0.image.url }}" alt="{{ news.0.title }}">
+				</div>
+				<div class="large_content">
+					<h3>{{ news.0.title }}</h3>
+					<p>{{ news.0.summary }}</p>
+				</div>
+			</a>
+			<div class="small">
+				{% for new in news|slice:"1:5" %}
+				<a href="{% url 'detail' new.id %}" class="small_item card">
+					<div class="small_item_img">
+						<img src="{{ new.image.url }}" alt="Image">
+					</div>
+					<div class="small_item_content">
+						<h3>{{ new.title }}</h3>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+			<div class="small2">
+				{% for new in news|slice:"5:9" %}
+				<a href="{% url 'detail' new.id %}" class="small_item card">
+					<div class="small_item_img">
+						<img src="{{ new.image.url }}" alt="Image">
+					</div>
+					<div class="small_item_content">
+						<h3>{{ new.title }}</h3>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="paginator">
+			<a href="?page=1" class="to_first"></a>
+			<a href="" class="prev_page"></a>
+			{% for num in news.paginator.page_range %}
+				{% if news.number == num %}
+					<a href="?page={{ num }}" class="active">{{ num }}</a>
+				{% elif num > news.number|add:'-3' and num < news.number|add:'3' %}
+					<a href="?page={{ num }}">{{ num }}</a>
+				{% endif %}
+			{% endfor %}
+			<a href="" class="next_page"></a>
+			<a href="?page={{ news.paginator.num_pages }}" class="to_last"></a>
+		</div>
+	</div>
+{% endblock %}
