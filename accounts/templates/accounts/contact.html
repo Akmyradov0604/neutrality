@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="contact_content" style="padding: 75px 0 150px;">
+		<h2>Contact us</h2>
+		<div class="phone">
+			<p>
+				or call us
+				<a href>+993 (12) 44 57 91</a>
+			</p>
+			<p>Write to us</p>	
+		</div>
+
+		<form action="{% url 'contact' %}" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="input_wrapper half">
+				<input type="text" name="name" placeholder="Name*">
+			</div>
+			<div class="input_wrapper half" style="margin-left: 1.11rem">
+				<input type="email" name="email" placeholder="Email*">
+			</div>
+			<div class="input_wrapper">
+				<textarea  rows="10" name="message" placeholder="Message*"></textarea>
+			</div>
+			<div class="file_input">
+				<div class="file">
+					Attach File
+				</div>
+				<input accept="image/jpeg,image/png,application/pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" name="attached" type="file">
+			</div>
+			<div class="checkbox" style="margin-bottom: .833rem;">
+				<label>
+					<input type="checkbox">
+					NDA required
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox">
+					I agree with privacy and use of requested data
+				</label>
+			</div>
+			<button type="submit" class="send">Send</button>
+		</form>
+	</div>
+{% endblock %}
