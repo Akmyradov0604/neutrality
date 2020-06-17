@@ -71,6 +71,8 @@ TEMPLATES = [
     },
 ]
 
+AUHT_USER_MODEL = 'accounts.Account'
+
 WSGI_APPLICATION = 'neutrality.wsgi.application'
 
 

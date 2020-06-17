@@ -1,17 +1,354 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<div class="register_cont" style="padding: 75px 0 150px;">
-		<h3 style="margin-bottom: 1.3888rem; font-size: 1.2rem;">Here, you can apply to participate in the International Conference</h3>
-		<div class="info" style="float: right;">
-			<h4>Contact us</h4>
-			<p>Tel.: <a href>+993 12 44 57 91</a></p>
-			<p>Email: <a href>info@neutrality.gov.tm</a></p>
-		</div>
-		<div class="condition" style="margin-bottom: 4.444rem;">
-			<p>All fields have to be filled either in English or in Russian.</p>
-			<p>Filling of the fields marked with asterisk(*) is obligatory. Registration cannot been completed without them.</p>
-			<p>Information in the Surname, First Name, Place of Birth, and Passport Number fields must match the information in your passport exactly.</p>
-		</div>
+{% load static %}
+<div class="register_cont">
+	<h3 style="margin-bottom: 1.3888rem; font-size: 1.2rem;">Here, you can apply to participate in the International Conference</h3>
+	<div class="info" style="float: right;">
+		<h4>Contact us</h4>
+		<p>Tel.: <a href>+993 12 44 57 91</a></p>
+		<p>Email: <a href>info@neutrality.gov.tm</a></p>
 	</div>
+	<div class="condition" style="margin-bottom: 4.444rem;">
+		<p>All fields have to be filled either in English or in Russian.</p>
+		<p>Filling of the fields marked with asterisk(*) is obligatory. Registration cannot been completed without them.</p>
+		<p>Information in the Surname, First Name, Place of Birth, and Passport Number fields must match the information in your passport exactly.</p>
+	</div>
+	<form class="register_form" action="{% url 'register' %}" method="POST">
+		{% csrf_token %}
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<p>State/Governmental Delegation
+							<span class="asterisk">*</span>
+						</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<select name="state" required>
+								<option value="0">Government institution</option>
+								<option value="1">Intergovernmental Organization</option>
+								<option value="2">Company</option>
+								<option value="3">NGO</option>
+								<option value="4">Press</option>
+								<option value="5">Other</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Country/Organization
+							<span class="asterisk">*</span>
+						</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<select name="country" required>
+								<option value="0" disabled>Select your country</option>
+								<option value="1">Turkmenistan</option>
+								<option value="2">Turkmenistan</option>
+								<option value="3">Turkmenistan</option>
+								<option value="4">Turkmenistan</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Title <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="title" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Family name/Surname <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="last_name" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Given/First name <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="first_name" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Organization/Institution <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="organization" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Position <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="position" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Position in delegation
+							<span class="asterisk">*</span>
+						</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<select name="position_delegation" required>
+								<option value="0" disabled>Select your position</option>
+								<option value="1">Head of delegation</option>
+								<option value="2">Deputy</option>
+								<option value="3">Protocol officer</option>
+								<option value="4">Security</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Gender
+							<span class="asterisk">*</span>
+						</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<select name="gender" required>
+								<option value="0" disabled>Select your gender</option>
+								<option value="1">Male</option>
+								<option value="2">Female</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Date of birth <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="date_of_birth" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Place of birth <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="place_of_birth" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Passport/travel document number <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="passport_number" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Expiry date <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="expiry_date" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><p>Upload the main page of your passport/travel document <span class="asterisk">*</span></p></td>
+					<td>
+						<div class="photo_wrapper">
+							<div class="default">
+								<img src="{% static 'images/Passport.png' %}" alt="">
+							</div>
+							<div class="requirements">
+								<h4 style="margin-bottom: 1.666rem; font-size: .8rem;">Photo must meet the following requirements:</h4>
+								<div class="passport_requirements">
+									<p>Size: Max 5 MB</p>
+									<p>Format: PDF</p>
+								</div>
+								<div class="file_input" style="position: relative; width: 40%;">
+									<input name="passport_image" type="file" accept="application/pdf" required="required">
+									<div class="fake_file_input">
+										<span>Select File</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><p>Photo <span class="asterisk">*</span></p></td>
+					<td>
+						<div class="photo_wrapper">
+							<div class="default">
+								<img src="{% static 'images/Profile1.png' %}" alt="">
+							</div>
+							<div class="requirements">
+								<h4 style="margin-bottom: 1.666rem; font-size: .8rem;">Photo must meet the following requirements:</h4>
+								<div class="passport_requirements">
+									<p>Size: Max 5 MB</p>
+									<p>Colour photo on a white background, in line with photo ID standards</p>
+									<p>Format: Jpg, Jpeg</p>
+									<p>The face must fill at list 70% of the photo</p>
+								</div>
+								<div class="file_input" style="position: relative; width: 40%;">
+									<input name="photo" type="file" accept="image/jpeg" required="required">
+									<div class="fake_file_input">
+										<span>Select File</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Office phone</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="office_phone" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Mobile phone <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="mobile_phone" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Email <span class="asterisk">*</span></p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="email" name="email" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>E-mail of the contact person, if the registration was not completed by the participant</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="email" name="email_contact" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Addres</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="address" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Means of Transport</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="means_of_transport" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Arrival date and time</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="arrival" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Flight number</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="arr_flight_num" required>
+						</div>
+					</td>
+				</tr>
+					<td>
+						<p>Departure date and time</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<p>Flight number</p>
+					</td>
+					<td>
+						<div class="input_wrapper">
+							<input type="text" name="dep_flight_num" required>
+						</div>
+					</td>
+				</tr>
+				<tr>
+			</tbody>
+		</table>
+		{% for error in field.errors %}
+			<p style="color: red;">{{ error }}</p>
+		{% endfor %}
+		<div class="checkbox" style="margin-bottom: .833rem;">
+			<label style="color: #222353; font-size: 1rem;">
+				<input name="nda" type="checkbox">
+				NDA required
+			</label>
+		</div>
+		<div class="checkbox">
+			<label style="color: #222353; font-size: 1rem;">
+				<input name="privacy" type="checkbox">
+				I agree with privacy and use of requested data
+			</label>
+		</div>
+		<div class="registr_condition">
+			<h4 style="font-size: 1rem; margin-bottom: .833rem;">Please complete all fields</h4>
+			<p>Please select your participation package* Title* Citizenship* Surname* First name* Gender* Date of birth* Passport number* Country of residence* I agree to processing of personal data*</p>
+		</div>
+		<button type="submit" class="submit"><span>REGISTRATION</span></button>
+	</form>
+</div>
 {% endblock %}
