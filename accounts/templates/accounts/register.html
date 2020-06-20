@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
+{% block title %}
+	Register
+{% endblock %}
+
 {% block content %}
+
 {% load static %}
+
+{% if error %}
+	{% for err in error %}
+		<h1 style="color: red;">{{ err }}</h1>
+	{% endfor %}
+{% endif %}
 <div class="register_cont">
 	<h3 style="margin-bottom: 1.3888rem; font-size: 1.2rem;">Here, you can apply to participate in the International Conference</h3>
 	<div class="info" style="float: right;">
@@ -14,7 +25,7 @@
 		<p>Filling of the fields marked with asterisk(*) is obligatory. Registration cannot been completed without them.</p>
 		<p>Information in the Surname, First Name, Place of Birth, and Passport Number fields must match the information in your passport exactly.</p>
 	</div>
-	<form class="register_form" action="{% url 'register' %}" method="POST">
+	<form class="register_form" action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		<table>
 			<tbody>
@@ -175,7 +186,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="expiry_date" required>
+							<input type="text" name="expiry_date">
 						</div>
 					</td>
 				</tr>
@@ -233,7 +244,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="office_phone" required>
+							<input type="text" name="office_phone">
 						</div>
 					</td>
 				</tr>
@@ -243,7 +254,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="mobile_phone" required>
+							<input type="text" name="mobile_phone">
 						</div>
 					</td>
 				</tr>
@@ -253,7 +264,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="email" name="email" required>
+							<input type="email" name="email">
 						</div>
 					</td>
 				</tr>
@@ -263,7 +274,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="email" name="email_contact" required>
+							<input type="email" name="email_contact">
 						</div>
 					</td>
 				</tr>
@@ -273,7 +284,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="address" required>
+							<input type="text" name="address">
 						</div>
 					</td>
 				</tr>
@@ -283,7 +294,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="means_of_transport" required>
+							<input type="text" name="means_of_transport">
 						</div>
 					</td>
 				</tr>
@@ -293,7 +304,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="arrival" required>
+							<input type="text" name="arrival">
 						</div>
 					</td>
 				</tr>
@@ -303,7 +314,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="arr_flight_num" required>
+							<input type="text" name="arr_flight_num">
 						</div>
 					</td>
 				</tr>
@@ -312,7 +323,7 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" required>
+							<input type="text">
 						</div>
 					</td>
 				</tr>
@@ -322,16 +333,13 @@
 					</td>
 					<td>
 						<div class="input_wrapper">
-							<input type="text" name="dep_flight_num" required>
+							<input type="text" name="dep_flight_num">
 						</div>
 					</td>
 				</tr>
 				<tr>
 			</tbody>
 		</table>
-		{% for error in field.errors %}
-			<p style="color: red;">{{ error }}</p>
-		{% endfor %}
 		<div class="checkbox" style="margin-bottom: .833rem;">
 			<label style="color: #222353; font-size: 1rem;">
 				<input name="nda" type="checkbox">

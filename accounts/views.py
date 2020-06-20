@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from news.models import News
+from django.template.defaultfilters import filesizeformat
+from django.core.exceptions import ValidationError
 from django.core.mail import send_mail, EmailMessage
 from django.conf import settings
 from accounts.models import Account
@@ -13,15 +15,48 @@ def programme(request):
 	return render(request, 'accounts/about.html')
 
 def register(request):
-	context = {}
+	error = []
 	if request.method == "POST":
 		if request.POST.get('privacy') == 'on':
-		   privacy = True
+	  		privacy = True
 		else:
-		   privacy = False
-		user = Account.objects.create_user(request.POST.get('first_name'),request.POST.get('last_name'),request.POST.get('state'),request.POST.get('country'),request.POST.get('title'),request.POST.get('organization'),request.POST.get('position'),request.POST.get('position_delegation'),request.POST.get('gender'),request.POST.get('date_of_birth'),request.POST.get('place_of_birth'),request.POST.get('passport_number'),request.POST.get('passport_image'),request.POST.get('photo'),request.POST.get('mobile_phone'),request.POST.get('email'),privacy)
-		auth.login(request, user)
-		return redirect('home')
+	   		privacy = False
+		passport_image = request.FILES['passport_image']
+		photo = request.FILES['photo']
+		passportsize = passport_image.size
+		photosize = photo.size
+
+		if passportsize > 5242880: 
+			error.append('Passpor file must be below 5MB')
+		if photosize > 5242880: 
+			error.append('Photo must be below 5MB')
+		if privacy == False:
+		 	error.append('Please agree to privacy policy')
+
+		if not error: 
+			user = Account.objects.create_user(
+				request.POST.get('first_name'),
+				request.POST.get('last_name'),
+				request.POST.get('state'),
+				request.POST.get('country'),
+				request.POST.get('title'),
+				request.POST.get('organization'),
+				request.POST.get('position'),
+				request.POST.get('position_delegation'),
+				request.POST.get('gender'),
+				request.POST.get('date_of_birth'),
+				request.POST.get('place_of_birth'),
+				request.POST.get('passport_number'),
+				request.FILES['passport_image'],
+				request.FILES['photo'],
+				request.POST.get('mobile_phone'),
+				request.POST.get('email'),
+				privacy
+			)
+			auth.login(request, user)
+			return render(request, 'accounts/home.html', {'success': 'You have successfully registered!!!'})
+		else:
+			return render(request, 'accounts/register.html', {'error': error})
 	else:
 		return render(request, 'accounts/register.html')
 

@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-
+{% block title %}
+	News
+{% endblock %}
 {% block content %}
 	{% load static %}
 	<div class="news-content">
 		<h1>News</h1>
 		
 		<div class="news">
-			<a href="{% url 'detail' news.0.id %}" class="large card">
+			<a href="{% url 'detail' news.0.id %}" class="large card_news">
 				<div class="large_img">
 					<img src="{{ news.0.image.url }}" alt="{{ news.0.title }}">
 				</div>
@@ -17,7 +19,7 @@
 			</a>
 			<div class="small">
 				{% for new in news|slice:"1:5" %}
-				<a href="{% url 'detail' new.id %}" class="small_item card">
+				<a href="{% url 'detail' new.id %}" class="small_item card_news">
 					<div class="small_item_img">
 						<img src="{{ new.image.url }}" alt="Image">
 					</div>
@@ -29,7 +31,7 @@
 			</div>
 			<div class="small2">
 				{% for new in news|slice:"5:9" %}
-				<a href="{% url 'detail' new.id %}" class="small_item card">
+				<a href="{% url 'detail' new.id %}" class="small_item card_news">
 					<div class="small_item_img">
 						<img src="{{ new.image.url }}" alt="Image">
 					</div>

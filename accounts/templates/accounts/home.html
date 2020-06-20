@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
+{% block title %}
+	Home
+{% endblock %}
+
 {% block content %}
 {% load static %}
 <div class="home-content">
+	{% if success %}
+		<h1 style="color: green;">{{ success }}</h1>
+	{% endif %}
 	<div class="president card">
 		<div class="president-img">
 			<img src="{% static 'images/President.jpg' %}" alt="">
@@ -81,34 +88,113 @@
 				<div class="slider_img">
 					<img src="{% static 'images/gallery/6.jpg' %}" alt="">
 				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/7.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/8.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/9.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/10.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/11.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/12.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/13.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/14.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/15.jpg' %}" alt="">
+				</div>
+				<div class="slider_img">
+					<img src="{% static 'images/gallery/16.jpg' %}" alt="">
+				</div>v
 			</div>
-		<div class="gallery_btn_wrapper">
-			<div class="gallery_btn" onclick="PrevSlide()">></div>
-			<div class="gallery_btn" onclick="NextSlide()"><</div>
-		</div>	
+			<div class="gallery_btn_wrapper">
+				<div class="gallery_btn" data-dir="prev">></div>
+				<div class="gallery_btn" data-dir="next"><</div>
+			</div>	
 		</div>
 	</div>
 	<div class="mini_gallery_cont">
 		<div class="mini_gallery">
 			<div class="gallery_item">
-				<img src="{% static 'images/gallery/1.jpg' %}" alt="">
+				<img src="{% static 'images/gallery/1.jpg' %}" alt="" onclick="current(1)">
 			</div>
 			<div class="gallery_item">
-				<img src="{% static 'images/gallery/2.jpg' %}" alt="">
+				<img src="{% static 'images/gallery/2.jpg' %}" alt="" onclick="current(2)" >
 			</div>
 			<div class="gallery_item">
-				<img src="{% static 'images/gallery/3.jpg' %}" alt="">
+				<img src="{% static 'images/gallery/3.jpg' %}" alt="" onclick="current(3)">
 			</div>
 			<div class="gallery_item">
-				<img src="{% static 'images/gallery/4.jpg' %}" alt="">
+				<img src="{% static 'images/gallery/4.jpg' %}" alt="" onclick="current(4)">
 			</div>
 			<div class="gallery_item">
-				<img src="{% static 'images/gallery/5.jpg' %}" alt="">
+				<img src="{% static 'images/gallery/5.jpg' %}" alt="" onclick="current(5)">
 			</div>
 			<div class="gallery_item">
-				<img src="{% static 'images/gallery/6.jpg' %}" alt="">
+				<img src="{% static 'images/gallery/6.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/7.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/8.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/9.jpg' %}" alt="" onclick="current(6)">
+			</div>
+
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/10.jpg' %}" alt="" onclick="current(6)">
+			</div>
+
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/11.jpg' %}" alt="" onclick="current(6)">
+			</div>
+
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/12.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/13.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/14.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/15.jpg' %}" alt="" onclick="current(6)">
+			</div>
+			<div class="gallery_item">
+				<img src="{% static 'images/gallery/16.jpg' %}" alt="" onclick="current(6)">
 			</div>
 		</div>
 	</div>
 </div>	
+{% endblock %}
+
+{% block map %}
+	<div class="google_maps">
+		<div id="map" style="overflow: hidden;"></div>
+		<div class="google_container">
+			<div class="location">
+				<h2>TO CONTACT</h2>
+				<p class="contact_us">If you have any questions please contact through the phone or email showed below.</p>
+				<div class="address_container">
+					<p>+993 (12) 44 57 91 <br> info@neutrality.gov.tm</p>
+					<p>Ashgabat, Archabil av., 108 <br> Ashgabat, Turkmenistan</p>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
