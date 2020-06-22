@@ -6,8 +6,12 @@
 	<title>{% block title %} {% endblock %}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
-<body>
+<body data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0">
 	<video autoplay muted loop >
 		<source src="{% static 'video/videos.mp4' %}" type="video/mp4">
 		</video>
@@ -54,28 +58,28 @@
 				</nav>
 			</div>	
 			<div class="bottom">
-			<div class="date">
-				<h3>DECEMBER 11-12, 2020 ASHGABAT, TURKMENISTAN</h3>
-			</div>
-			<div class="header_bottom">
-				<div class="bottom_left" >
-					<h1>
-						INTERNATIONAL CONFERENCE «POLICY OF NEUTRALITY AND ITS IMPORTANCE IN ENSURING INTERNATIONAL PEACE, SECURITY AND SUSTAINABLE DEVELOPMENT»
-					</h1>
-					<a href="{% url 'register' %}" class="register">Registration</a>
+				<div class="date">
+					<h3>DECEMBER 11-12, 2020 ASHGABAT, TURKMENISTAN</h3>
 				</div>
-				<div class="bottom_right">
-					<div class="logo_2">
-						<img src="{% static 'images/Logo_2.png' %}" alt="">
+				<div class="header_bottom">
+					<div class="bottom_left" >
+						<h1>
+							INTERNATIONAL CONFERENCE «POLICY OF NEUTRALITY AND ITS IMPORTANCE IN ENSURING INTERNATIONAL PEACE, SECURITY AND SUSTAINABLE DEVELOPMENT»
+						</h1>
+						<a href="{% url 'register' %}" class="register">Registration</a>
 					</div>
-					<p>
-						2020 year -
-						<br>
-						Turkmenistan – Home of Neutrality
-					</p>
+					<div class="bottom_right">
+						<div class="logo_2">
+							<img src="{% static 'images/Logo_2.png' %}" alt="">
+						</div>
+						<p>
+							2020 year -
+							<br>
+							Turkmenistan – Home of Neutrality
+						</p>
+					</div>
 				</div>
 			</div>
-		</div>
 		</header>
 		<div class="main-wrapper">
 			<div class="main">
@@ -154,6 +158,10 @@
 		</div>
 		{% block scripts %}
 		{% endblock %}
+		<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="{% static 'js/app.js' %}"></script>
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZN9wu9vn-WWqPZylf8vExw-bVo0CrHoQ&callback=initMap"></script>

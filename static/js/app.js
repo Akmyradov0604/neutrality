@@ -30,7 +30,7 @@ $('.gallery_btn_wrapper').show().find('.gallery_btn').on('click', function() {
 	} else {
 		--current;
 	}
-	if (current >= 16) {current = 0}
+	
 	transition(direction,slider, current)
 });
 

@@ -10,7 +10,7 @@
 	{% if success %}
 		<h1 style="color: green;">{{ success }}</h1>
 	{% endif %}
-	<div class="president card">
+	<div class="president card" >
 		<div class="president-img">
 			<img src="{% static 'images/President.jpg' %}" alt="">
 		</div>
@@ -24,11 +24,11 @@
 			</p>
 		</div>
 	</div>
-	<div class="title">
+	<div class="title" data-aos="fade-up">
 		<a href="{% url 'news' %}">View all ></a>
 		<h1>Latest news</h1>
 	</div>
-	<div class="news">
+	<div class="news" data-aos="fade-up">
 		<a href="{% url 'detail' news.0.id %}" class="large card_news">
 			<div class="large_img">
 				<img src="{% static 'images/test.jpg' %}" alt="#">
@@ -36,6 +36,7 @@
 			<div class="large_content">
 				<h3>{{ news.0.title }}</h3>
 				<p>{{ news.0.summary }}</p>
+				<span class="news_date">{{ new.date }}</span>
 			</div>
 		</a>
 		<div class="small">
@@ -46,13 +47,13 @@
 				</div>
 				<div class="small_item_content">
 					<h3>{{ new.title }}</h3>
-					<span>{{ new.date }}</span>
+					<span class="news_date">{{ new.date }}</span>
 				</div>
 			</a>
 			{% endfor %}
 		</div>
 	</div>
-	<div class="other_news_container">
+	<div class="other_news_container" data-aos="fade-up">
 		<div class="other_news">
 			<div class="other_news_img">
 				<img src="{% static 'images/other_news.jpeg' %}" alt="">
@@ -64,10 +65,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="title">
+	<div class="title" data-aos="fade-up">
 		<h1>MOMENTS FROM CEREMONY</h1>
 	</div>
-	<div class="gallery">
+	<div class="gallery" data-aos="fade-up">
 		<div class="slider_container">
 			<div id="test" class="slider">
 				<div class="slider_img">
@@ -125,7 +126,7 @@
 			</div>	
 		</div>
 	</div>
-	<div class="mini_gallery_cont">
+	<div class="mini_gallery_cont" >
 		<div class="mini_gallery">
 			<div class="gallery_item">
 				<img src="{% static 'images/gallery/1.jpg' %}" alt="" onclick="current(1)">
@@ -184,10 +185,11 @@
 {% endblock %}
 
 {% block map %}
-	<div class="google_maps">
+	<div class="google_maps" >
 		<div id="map" style="overflow: hidden;"></div>
 		<div class="google_container">
-			<div class="location">
+			<div class="location" data-aos="fade-up"
+     data-aos-duration="3000">
 				<h2>TO CONTACT</h2>
 				<p class="contact_us">If you have any questions please contact through the phone or email showed below.</p>
 				<div class="address_container">

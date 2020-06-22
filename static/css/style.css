@@ -246,7 +246,13 @@ nav{
 	color: #222353;
 	overflow: hidden;
 }
-
+.news_date{
+	margin-bottom: 1%;
+	font-family: Montserrat,sans-serif;
+	text-transform: uppercase;
+	color: #e8b482;
+	font-size: .7rem;
+}
 .home-content{
 	padding: 75px 0 100px;
 }
@@ -1305,7 +1311,7 @@ footer{
 }
 
 .header_top{
-	height: 250px;
+	height: 210px;
 }
 
 .google_maps{
@@ -1514,6 +1520,7 @@ footer{
 	.large_content{
 		display: inline-flex;
 		vertical-align: top;
+		justify-content: space-between;
 		flex-direction: column;
 		justify-content: space-between;
 		width: 69%;
